@@ -6,7 +6,7 @@ function ac=a_c(f0,gamma,delta,theta,n)
         beta=-2*B*exp(-gamma*A);
         A_e=acos(-alpha/beta)/sqrt(beta^2-alpha^2)-A
     end
-ac=fzero(@a_et,1);
+ac=fzero(@a_et,-1);
 end
 
 
