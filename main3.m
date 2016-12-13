@@ -3,14 +3,14 @@ gamma=0.2;
 delta=0.05;
 theta=10^11;
 n=5;
-tmax=2000;
+tmax=10000;
 
 %Recherche du A critique
 Ac=a_c(f0,gamma,delta,theta,n)
 
 tspan=[0,tmax];
 i=1;
-for A=linspace(Ac-1,Ac+1,9)
+for A=linspace(Ac,Ac+0.005,9)
     N=length(0.5:0.5:5);
     sol=dde(gamma,delta,f0,n,A,theta,tspan);
     r_e=theta*(f0*(2*exp(-gamma*A)-1)/delta-1)^(1/n);
@@ -59,7 +59,7 @@ for A=linspace(Ac-1,Ac+1,9)
     i=i+1;
 end
 
-% Graphiquement on trouve Ac autour de 1.84
+% Graphiquement on trouve Ac autour de 1.789
 
 
 
