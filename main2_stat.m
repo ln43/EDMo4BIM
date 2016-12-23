@@ -14,8 +14,9 @@ i=1;
 
 r0=theta;
 pr=Stationnaire(gamma,delta,f0,r0,a,t);
-
+    
 figure(1)
+subplot(1,2,1)
 h=surf(a,t,pr(1:length(a(:,1)),:));
 h.LineStyle='none';
 title('Solutions stationnaires p')
@@ -23,7 +24,7 @@ xlabel('a')
 ylabel('t')
 zlabel('p(t,a)')
     
-figure(2)
+subplot(1,2,2)
 h=surf(a(2:length(a(:,1)),:),t(2:length(a(:,1)),:),pr(length(a(:,1))+1:length(pr)-1,:));
 h.LineStyle='none';
 title('Solutions stationnaires r')

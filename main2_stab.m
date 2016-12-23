@@ -21,7 +21,7 @@ for c3=linspace(-10,10,3)
     
     %Representation de p en fonction de t et a pour différents c3 pris
     figure(1)
-    subplot(1,3,i)
+    subplot(2,3,i)
     h=surf(a,t,pr(1:length(a(:,1)),:));
     h.LineStyle='none';
     title(strcat('c3 = ',num2str(c3)))
@@ -31,8 +31,8 @@ for c3=linspace(-10,10,3)
     axis([0 2*A 0 10 0 1])
     
     %Representation de r en fonction de t et a pour différents c3 pris
-    figure(2)
-    subplot(1,3,i)
+    %figure(2)
+    subplot(2,3,i+3)
     g=surf(a(2:length(a(:,1)),:),t(2:length(a(:,1)),:),pr(length(a(:,1))+1:length(pr(:,1))-1,:));
     g.LineStyle='none';
     title(strcat('c3 = ',num2str(c3)))
