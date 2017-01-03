@@ -1,12 +1,23 @@
+%Fonction permettant de calculer la valeur du A critique pour l'apparition
+%des oscillations en fonction des différents paramètres du système
+
+% alpha et beta sont les coefficients de l'equation caractéristique :
+% lambda+alpha+beta*exp(-lambda A)
+
+% B est defini comme f'(R*)R*+f(R*) où R* est l'equilibre
+
+% Les oscillations non amorties sont observées pour A=A*
+% A^*=arccos(-alpha+beta)/sqrt(beta^2-alpha^2)
+
 function ac=a_c(f0,gamma,delta,theta,n)
     function A_e=a_et(A)
-        r_e=theta*(f0*(2*exp(-gamma*A)-1)/delta-1)^(1/n); % equilibre
+        r_e=theta*(f0*(2*exp(-gamma*A)-1)/delta-1)^(1/n); % Equilibre R
         B=f0*theta^n*(1-n*r_e^(n)/(r_e^n+theta^n))/(r_e^n+theta^n);
         alpha=-gamma+delta+B;
         beta=-2*B;
         A_e=acos(-alpha/beta)/sqrt(beta^2-alpha^2)-A;
     end
-ac=fzero(@a_et,1);
+ac=fzero(@a_et,-1);%On veut obtenir A*-A=0
 end
 
 

@@ -16,7 +16,7 @@ function sol=dde(gamma,delta,f0,n,A,theta,tspan)
     function s = ddhist(t)
     % Constant history function for DDEX1.
     
-        s =ones(2,1);
+        s =theta*ones(2,1);
     end
 
     sol=dde23(@equation,A,@ddhist,tspan);
