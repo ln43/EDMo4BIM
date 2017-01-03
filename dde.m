@@ -3,7 +3,8 @@ function sol=dde(gamma,delta,f0,n,A,theta,tspan)
     function dydt=equation(t,y,Z)
         R=y(2);
         P=y(1);
-        RA=Z(2,2);
+        ylag = Z(:,1);
+        RA=ylag(2);
         dydt=[-gamma*P+Hill(R)*R-exp(-gamma*A)*Hill(RA)*RA ;
             -delta*R-Hill(R)*R+2*exp(-gamma*A)*Hill(RA)*RA];
     end
@@ -18,5 +19,5 @@ function sol=dde(gamma,delta,f0,n,A,theta,tspan)
         s =ones(2,1);
     end
 
-    sol=dde23(@equation,[10^-30,A],@ddhist,tspan);
+    sol=dde23(@equation,A,@ddhist,tspan);
 end
