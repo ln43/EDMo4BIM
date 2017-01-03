@@ -5,8 +5,8 @@ function sol=dde(gamma,delta,f0,n,A,theta,tspan)
         P=y(1);
         ylag = Z(:,1);
         RA=ylag(2);
-        dydt=[-gamma*P+Hill(R)*R-exp(-gamma*A)*Hill(RA)*RA ;
-            -delta*R-Hill(R)*R+2*exp(-gamma*A)*Hill(RA)*RA];
+        dydt=[-gamma*P + Hill(R)*R - exp(-gamma*A)*Hill(RA)*RA ;
+            -delta*R - Hill(R)*R + 2*exp(-gamma*A)*Hill(RA)*RA];
     end
 
     function f=Hill(r)
