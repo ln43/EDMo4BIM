@@ -16,11 +16,12 @@ Ac=a_c(f0,gamma,delta,theta,n)
 Amax=min(log(2)/gamma,-log((delta+f0)/(2*f0))/gamma)
 
 %Diagramme de bifurcation
+'Diagramme de bifurcation'
 Nplot = 300;  
 figure(1)
 for A = 1:0.01:2.5,  
   sol = dde(gamma,delta,f0,n,A,theta,tspan);
-  t = linspace(1000,2000,Nplot);
+  t = linspace(1000,tmax,Nplot);
   y = deval(sol,t);
   P = y(1,:);
   R = y(2,:);
@@ -35,16 +36,17 @@ hold off;
 legend('P','R')
 
 % Simulations des solutions
+'Simulation des solutions'
 i=1;
 for A=[0.01 Ac 1.79 Ac+0.5 Amax 2*Amax]
     sol=dde(gamma,delta,f0,n,A,theta,tspan);
 
-    % Chroniques, P et R en fonction de t
+    % Chroniques de R en fonction de t
     figure(2);
     subplot(2,3,i)
     t=linspace(floor(A)+1,tmax,1000);
     Y=deval(sol,t);
-    plot(t,Y(1,:),t,Y(2,:));
+    plot(t,Y(2,:));
     if A==Ac
         title(strcat('Ac=',num2str(A)),'Color','r');
     else
@@ -55,8 +57,8 @@ for A=[0.01 Ac 1.79 Ac+0.5 Amax 2*Amax]
         end
     end
     xlabel('time t');
-    ylabel('solution y');
-    legend('P(t)','R(t)');
+    ylabel('R(t)');
+
     
     % Représentation 3D, R en fonction de P et t
     figure(3)
@@ -77,3 +79,5 @@ for A=[0.01 Ac 1.79 Ac+0.5 Amax 2*Amax]
 
     i=i+1;
 end
+
+'Fin du programme'
